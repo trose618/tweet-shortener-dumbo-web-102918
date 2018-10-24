@@ -18,6 +18,7 @@ def dictionary
     "to" => '2',
     "two" => '2',
     "too" => '2',
+    "For" => '4',
     "for" => '4',
     "four" => '4',
     "be" => 'b',
@@ -28,5 +29,24 @@ def dictionary
 end
 
 def bulk_tweet_shortener(tweets)
-  puts word_substituter(tweets)
+  
+   tweets.each do |tweet|
+   puts word_substituter(tweet)
+  end
+end
+
+def selective_tweet_shortener(tweet)
+    if tweet.split("").length > 140
+      word_substituter(tweet)
+    else
+      tweet
+    end
+end
+
+def shortened_tweet_truncator(tweet)
+  if tweet.split("").size > 140
+    tweet[0..136] << "..."
+  else
+    tweet
+  end
 end
